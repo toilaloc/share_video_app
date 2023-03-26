@@ -1,0 +1,18 @@
+<div class="container">
+  </form>
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <%= form_with url: "http://localhost:3000/share_videos", method: :post do |f| %>
+
+        <%= f.label :youtube_link %>
+        <%= f.text_field :youtube_link, class: 'form-control' %>
+
+        <%= f.label :description %>
+        <%= f.text_area :description, size: "70x5", class: 'form-control'  %>
+
+        <%= f.submit "Share", class: " mt-2 btn btn-primary" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

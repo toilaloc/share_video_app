@@ -5,5 +5,6 @@ class ActionDispatch::Routing::Mapper
 end
 
 Rails.application.routes.draw do
+  root to: "users#index"
   draw :routes
 end
