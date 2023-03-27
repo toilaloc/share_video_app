@@ -23,14 +23,14 @@ class UsersController < ApplicationController
       end
     end
 
-    render :index
+    redirect_to root_url, :shared_videos => @shared_videos
   end
 
   def destroy
     session.delete(:user_id)
     @current_user = nil
 
-    render :index, :shared_videos => @shared_videos
+    redirect_to root_url, :shared_videos => @shared_videos
   end
 
   private

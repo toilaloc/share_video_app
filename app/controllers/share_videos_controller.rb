@@ -15,11 +15,11 @@ class ShareVideosController < ApplicationController
 
     if share_video.save
       flash[:success] = 'Share video successfully!'
-      render :index, :locals => {:current_user => @current_user, :shared_videos => @shared_videos}
     else
-      flash[:success] = 'Something went wrong!'
-      render :index, :locals => {:current_user => @current_user, :shared_videos => @shared_videos}
+      flash[:danger] = 'Something went wrong!'
     end
+
+    redirect_to root_url, :shared_videos => @shared_videos
   end
 
   private
@@ -29,10 +29,6 @@ class ShareVideosController < ApplicationController
   end
 
   def get_youtube_video_id
-    return if share_video_params[:youtube_link].blank?
-
-    video_id = share_video_params[:youtube_link].split("/").last
-
-    video_id.delete("watch?v=")
+    GetYoutubeVideoId.new(youtube_link: share_video_params[:youtube_link]).call
   end
 end
