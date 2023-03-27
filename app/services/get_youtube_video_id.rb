@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
-class Services::GetYoutubeVideoId < BaseService
+class GetYoutubeVideoId < BaseService
   def initialize *args
-    @youtube_link = args[:youtube_link]
+    @youtube_link = args.first[:youtube_link]
+  end
+
+  def call
+    get_youtube_video_id
   end
 
   private
@@ -12,6 +16,6 @@ class Services::GetYoutubeVideoId < BaseService
 
     video_id = @youtube_link.split("/").last
 
-    video_id.delete("watch?v=")
+    video_id.gsub("watch?v=", "")
   end
 end
