@@ -1,3 +1,8 @@
+databases:
+  - name: production_db
+    databaseName: production_db_ama8
+    user: production_db
+
 services:
   - type: web
     name: mysite
