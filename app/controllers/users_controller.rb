@@ -19,7 +19,7 @@ class UsersController < ApplicationController
         store_session(user)
         flash[:success] = 'Register successfully!'
       else
-        flash[:success] = 'Something went wrong!'
+        flash[:danger] = 'Something went wrong!'
       end
     end
 
